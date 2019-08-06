@@ -1,68 +1,57 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        portfolio-nuxt
-      </h1>
-      <h2 class="subtitle">
-        My Portfolio done in nuxt
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <Container>
+    <LangSwitcher />
+    <div class="image-container">
+      <Avatar :avatar-image="image"></Avatar>
     </div>
-  </div>
+    <div class="headline-container">
+      <MyContent />
+    </div>
+    <div class="contact-container">
+      <SocialList />
+    </div>
+    <Fox />
+  </Container>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Avatar from '../components/Avatar'
+import LangSwitcher from '../components/LangSwitcher'
+import SocialList from '../components/SocialList'
+import MyContent from '../components/MyContent'
+import Fox from '../components/Fox'
+import Container from '~/components/Container.vue'
 
 export default {
   components: {
-    Logo
+    Fox,
+    MyContent,
+    SocialList,
+    LangSwitcher,
+    Avatar,
+    Container
+  },
+  data() {
+    return {
+      image: '/Me.jpg'
+    }
   }
 }
 </script>
 
-<style>
-.container {
+<style lang="scss" scoped>
+.image-container {
+  width: 100%;
   margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  padding-top: 100px;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.headline-container {
+  width: 100%;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.contact-container {
+  width: calc(100% - 20px);
+  margin: 40px auto 0 auto;
 }
 </style>

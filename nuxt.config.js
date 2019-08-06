@@ -4,14 +4,17 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    htmlAttrs: {
+      lang: 'de-De'
+    },
+    title: 'Johannes Konze | Portfolio',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: 'My Portfolio'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -40,8 +43,33 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'nuxt-i18n'
   ],
+  i18n: {
+    locales: ['en', 'de'],
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en: {
+          job_title: 'Web-Developer',
+          company: '@vacation-apartments',
+          language_de: 'German',
+          language_en: 'English',
+          language_switch: 'Switch the language to'
+        },
+        de: {
+          job_title: 'Web-Entwickler',
+          company: '@traum-ferienwohnungen',
+          language_de: 'Deutsch',
+          language_en: 'Englisch',
+          language_switch: 'Sprache wechseln zu'
+        }
+      }
+    }
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
