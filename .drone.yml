@@ -16,20 +16,20 @@ steps:
         - push
 
   - name: build
-    image: docker
     volumes:
       - name: docker
         path: /var/run/docker.sock
-    commands:
-      - docker build -t portfolio-nuxt .
-      - docker tag portfolio-nuxt $${DOCKER_REGISTRY}/portfolio-nuxt
-      - docker push $${DOCKER_REGISTRY}/portfolio-nuxt
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USER
+      password:
+        from_secret: DOCKER_PASS
+      registry:
+        from_secret: DOCKER_REGISTRY
     trigger:
       branch:
         - master
-    environment:
-      DOCKER_REGISTRY:
-        from_secret: DOCKER_REGISTRY
 
 volumes:
   - name: docker
