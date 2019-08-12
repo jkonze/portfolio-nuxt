@@ -1,0 +1,31 @@
+kind: pipeline
+name: portfolio
+
+steps:
+  - name: audit
+    image: node:lts-alpine
+    commands:
+      - npm ci
+      - npx npm-audit --moderate
+    when:
+      event:
+        - push
+
+  - name: build
+    image: docker
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    commands:
+      - docker build -t portfolio-nuxt .
+      - docker tag portfolio-nuxt $${DOCKER_REGISTRY}/portfolio-nuxt
+      - docker push $${DOCKER_REGISTRY}/portfolio-nuxt
+    secrets: [ docker_registry ]
+    when:
+      branch:
+        - master
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
