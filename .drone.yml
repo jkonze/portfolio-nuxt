@@ -24,7 +24,6 @@ steps:
       - docker build -t portfolio-nuxt .
       - docker tag portfolio-nuxt $${DOCKER_REGISTRY}/portfolio-nuxt
       - docker push $${DOCKER_REGISTRY}/portfolio-nuxt
-    secrets: [ docker_registry ]
     trigger:
       branch:
         - master
