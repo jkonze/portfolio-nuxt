@@ -21,6 +21,7 @@ steps:
         path: /var/run/docker.sock
     image: plugins/docker
     settings:
+      repo: portfolio-nuxt
       username:
         from_secret: DOCKER_USER
       password:
