@@ -1,6 +1,9 @@
 kind: pipeline
 name: portfolio
 
+platform:
+  os: linux
+  arсh: amd64
 
 steps:
   - name: audit
