@@ -7,7 +7,7 @@ steps:
     commands:
       - npm ci
       - npx npm-audit --moderate
-    when:
+    trigger:
       event:
         - push
 
@@ -21,7 +21,7 @@ steps:
       - docker tag portfolio-nuxt $${DOCKER_REGISTRY}/portfolio-nuxt
       - docker push $${DOCKER_REGISTRY}/portfolio-nuxt
     secrets: [ docker_registry ]
-    when:
+    trigger:
       branch:
         - master
 
