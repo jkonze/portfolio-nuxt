@@ -22,7 +22,6 @@ steps:
         path: /var/run/docker.sock
     commands:
       - docker build -t portfolio-nuxt .
-      - docker login -p $${DOCKER_USER} -p ${DOCKER_PASS} $${DOCKER_REGISTRY}
       - docker tag portfolio-nuxt $${DOCKER_REGISTRY}/portfolio-nuxt
       - docker push $${DOCKER_REGISTRY}/portfolio-nuxt
     trigger:
