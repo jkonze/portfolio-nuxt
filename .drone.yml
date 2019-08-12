@@ -21,15 +21,13 @@ steps:
         path: /var/run/docker.sock
     image: plugins/docker
     settings:
-      repo: $${DOCKER_REGISTRY}/portfolio-nuxt
+      repo:
+        from_secret: DOCKER_REPO
       username:
         from_secret: DOCKER_USER
       password:
         from_secret: DOCKER_PASS
       registry:
-        from_secret: DOCKER_REGISTRY
-    environment:
-      DOCKER_REGISTRY:
         from_secret: DOCKER_REGISTRY
     trigger:
       branch:
