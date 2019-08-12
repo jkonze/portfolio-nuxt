@@ -27,6 +27,9 @@ steps:
     trigger:
       branch:
         - master
+    environment:
+      DOCKER_REGISTRY:
+        from_secret: DOCKER_REGISTRY
 
 volumes:
   - name: docker
