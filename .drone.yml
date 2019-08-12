@@ -30,10 +30,6 @@ steps:
     environment:
       DOCKER_REGISTRY:
         from_secret: DOCKER_REGISTRY
-      username:
-        from_secret: DOCKER_USER
-      password:
-        from_secret: DOCKER_PASS
 
 volumes:
   - name: docker
